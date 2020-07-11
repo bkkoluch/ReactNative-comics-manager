@@ -5,12 +5,12 @@ export default function (props) {
 	return (
 		<View
 			style={styles.container}
-			onClick={() => props.navigation.navigate('Comic')}
+			onPress={() => props.navigation.navigate('Comic')}
 		>
 			<Text style={styles.title}>{props.title}</Text>
 			<Image
 				style={styles.image}
-				source={props.image}
+				source={{ uri: props.image }}
 				resizeMode='contain'
 			/>
 		</View>
@@ -24,24 +24,17 @@ const styles = StyleSheet.create({
 		backgroundColor: '#000',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginBottom: '50px',
-		borderColor: '#ccc',
-		borderWidth: 5,
-		borderBottomLeftRadius: 20,
-		borderBottomRightRadius: 20,
-		borderTopLeftRadius: 20,
-		borderTopRightRadius: 20,
+		marginBottom: 50,
 	},
 	image: {
 		height: '100%',
-		width: '200px',
+		width: 200,
 	},
 	title: {
 		color: '#fff',
-		fontFamily: 'Trebuchet MS, sans-serif',
-		fontSize: '30px',
-		letterSpacing: '-2px',
+		fontSize: 30,
+		letterSpacing: -2,
 		textTransform: 'uppercase',
-		marginLeft: '5px',
+		marginLeft: 5,
 	},
 });

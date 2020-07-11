@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
 import axios from 'axios';
+import Comic from './components/Comic/Comic';
+import { View, Text } from 'react-native';
 
 export default class App extends Component {
 	state = {
 		comics: [],
 		previousComic: null,
 		recentComicNum: 0,
+		loading: true,
 	};
 
 	componentDidMount() {
@@ -34,6 +35,11 @@ export default class App extends Component {
 									secondResponse.data,
 								],
 							}));
+							if (counter == 6) {
+								this.setState({
+									loading: false,
+								});
+							}
 						})
 						.catch((error) => {
 							console.log(error);
@@ -47,33 +53,12 @@ export default class App extends Component {
 	}
 
 	render() {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.text}>Here's some comic</Text>
-				<Text style={styles.text}>{this.state.comics.title}</Text>
-				<Image
-					source={this.state.comics.img}
-					style={styles.image}
-					resizeMode='contain'
-				/>
-				<StatusBar style='auto' />
-			</View>
-		);
+		let content = null;
+		if (this.state.loading) {
+			content = <Text>Loading...</Text>;
+		} else {
+			content = <Comic comics={this.state.comics} />;
+		}
+		return <View>{content}</View>;
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#000',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	image: {
-		height: '300px',
-		width: '100%',
-	},
-	text: {
-		color: '#fff',
-	},
-});

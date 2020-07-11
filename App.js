@@ -1,13 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
 import axios from 'axios';
+import Comic from './components/Comic/Comic';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default class App extends Component {
 	state = {
 		comics: [],
-		previousComic: null,
 		recentComicNum: 0,
+		loading: true,
 	};
 
 	componentDidMount() {
@@ -34,6 +34,11 @@ export default class App extends Component {
 									secondResponse.data,
 								],
 							}));
+							if (counter == 6) {
+								this.setState({
+									loading: false,
+								});
+							}
 						})
 						.catch((error) => {
 							console.log(error);
@@ -47,33 +52,44 @@ export default class App extends Component {
 	}
 
 	render() {
+		let content = [];
+		if (this.state.loading) {
+			content = <Text style={{ color: '#fff' }}>Loading...</Text>;
+		} else {
+			content = this.state.comics.map((comic) => {
+				return (
+					<Comic
+						key={comic.num}
+						title={comic.title}
+						image={comic.img}
+					/>
+				);
+			});
+		}
+
 		return (
-			<View style={styles.container}>
-				<Text style={styles.text}>Here's some comic</Text>
-				<Text style={styles.text}>{this.state.comics.title}</Text>
-				<Image
-					source={this.state.comics.img}
-					style={styles.image}
-					resizeMode='contain'
-				/>
-				<StatusBar style='auto' />
+			<View style={{ backgroundColor: '#000', height: '100%' }}>
+				<Text style={styles.header}>
+					Here you can view few fun comics!
+				</Text>
+				{content}
 			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#000',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	image: {
-		height: '300px',
-		width: '100%',
-	},
-	text: {
-		color: '#fff',
+	header: {
+		marginTop: 0,
+		paddingVertical: 8,
+		borderWidth: 4,
+		borderColor: '#20232a',
+		borderRadius: 6,
+		backgroundColor: '#61dafb',
+		color: '#20232a',
+		textAlign: 'center',
+		fontSize: 30,
+		fontWeight: 'bold',
+		marginBottom: 50,
 	},
 });

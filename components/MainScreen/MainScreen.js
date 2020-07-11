@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Comic from '../Comic/Comic';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 export default class MainScreen extends Component {
 	state = {
@@ -72,12 +72,14 @@ export default class MainScreen extends Component {
 		}
 
 		return (
-			<View style={{ backgroundColor: '#000', height: '100%' }}>
-				<Text style={styles.header}>
-					Click on the comic if you want to view it in detail!
-				</Text>
-				{content}
-			</View>
+			<ScrollView>
+				<View style={{ backgroundColor: '#000', height: '100%' }}>
+					<Text style={styles.header}>
+						Click on the comic if you want to view it in detail!
+					</Text>
+					{content}
+				</View>
+			</ScrollView>
 		);
 	}
 }

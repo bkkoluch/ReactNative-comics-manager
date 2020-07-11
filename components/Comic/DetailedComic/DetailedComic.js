@@ -1,15 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 
 export default function DetailedComic({ navigation }) {
 	return (
-		<View>
-			<Text style={styles.title}>Detailed comic component</Text>
-			<Button
-				title='comic'
-				onPress={() => navigation.navigate('Home')}
-			></Button>
-		</View>
+		<TouchableOpacity>
+			<View>
+				<Text style={styles.title}>Detailed comic component</Text>
+				<Button
+					title='comic'
+					onPress={() => navigation.navigate('Home')}
+				></Button>
+			</View>
+		</TouchableOpacity>
 	);
 }
 

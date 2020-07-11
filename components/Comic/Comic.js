@@ -1,9 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Button } from 'react-native';
 
 export default function (props) {
 	return (
-		<View style={styles.container}>
+		<View
+			style={styles.container}
+			onClick={() => props.navigation.navigate('Comic')}
+		>
 			<Text style={styles.title}>{props.title}</Text>
 			<Image
 				style={styles.image}

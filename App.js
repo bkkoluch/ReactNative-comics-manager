@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Comic from './components/Comic/Comic';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default class App extends Component {
 	state = {
 		comics: [],
-		previousComic: null,
 		recentComicNum: 0,
 		loading: true,
 	};
@@ -53,12 +52,44 @@ export default class App extends Component {
 	}
 
 	render() {
-		let content = null;
+		let content = [];
 		if (this.state.loading) {
-			content = <Text>Loading...</Text>;
+			content = <Text style={{ color: '#fff' }}>Loading...</Text>;
 		} else {
-			content = <Comic comics={this.state.comics} />;
+			content = this.state.comics.map((comic) => {
+				return (
+					<Comic
+						key={comic.num}
+						title={comic.title}
+						image={comic.img}
+					/>
+				);
+			});
 		}
-		return <View>{content}</View>;
+
+		return (
+			<View style={{ backgroundColor: '#000', height: '100%' }}>
+				<Text style={styles.header}>
+					Here you can view few fun comics!
+				</Text>
+				{content}
+			</View>
+		);
 	}
 }
+
+const styles = StyleSheet.create({
+	header: {
+		marginTop: 0,
+		paddingVertical: 8,
+		borderWidth: 4,
+		borderColor: '#20232a',
+		borderRadius: 6,
+		backgroundColor: '#61dafb',
+		color: '#20232a',
+		textAlign: 'center',
+		fontSize: 30,
+		fontWeight: 'bold',
+		marginBottom: 50,
+	},
+});

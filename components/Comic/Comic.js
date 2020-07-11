@@ -1,19 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 
-const Comic = (props) => {
+export default function (props) {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Comic component</Text>
-			<Text>{console.log(props.comics[0].title)}</Text>
+			<Text>{console.log(props.title)}</Text>
 			<Image
 				style={styles.image}
-				source={props.comics[0].img}
+				source={props.image}
 				resizeMode='contain'
 			/>
 		</View>
 	);
-};
+}
 
 const styles = StyleSheet.create({
 	container: {
@@ -21,14 +20,18 @@ const styles = StyleSheet.create({
 		backgroundColor: '#000',
 		alignItems: 'center',
 		justifyContent: 'center',
+		height: '50vh',
+		marginBottom: '50px',
 	},
 	image: {
-		height: '300px',
+		height: '100%',
 		width: '100%',
 	},
-	text: {
+	title: {
 		color: '#fff',
+		fontFamily: 'Trebuchet MS, sans-serif',
+		fontSize: '2rem',
+		letterSpacing: '-2px',
+		textTransform: 'uppercase',
 	},
 });
-
-export default Comic;

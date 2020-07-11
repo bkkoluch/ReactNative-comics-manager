@@ -70,7 +70,7 @@ export default class App extends Component {
 		return (
 			<View style={{ backgroundColor: '#000', height: '100%' }}>
 				<Text style={styles.header}>
-					Here you can view few fun comics!
+					Click on the comic if you want to view it in detail!
 				</Text>
 				{content}
 			</View>

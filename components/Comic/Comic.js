@@ -4,15 +4,13 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 export default function (props) {
 	return (
 		<TouchableOpacity>
-			<View
-				style={styles.container}
-				onTouchStart={() => props.navigation.navigate('Comic')}
-			>
+			<View style={styles.container}>
 				<Text style={styles.title}>{props.title}</Text>
 				<Image
 					style={styles.image}
 					source={{ uri: props.image }}
 					resizeMode='contain'
+					onTouchStart={() => props.navigation.navigate('Comic')}
 				/>
 			</View>
 		</TouchableOpacity>

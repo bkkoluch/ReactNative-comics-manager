@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Comic from '../Comic/Comic';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
+
+import Comic from '../Comic/Comic';
 
 export default class MainScreen extends Component {
 	state = {
@@ -55,6 +56,8 @@ export default class MainScreen extends Component {
 		const { navigation } = this.props;
 
 		let content = [];
+		let header = null;
+		let footer = null;
 
 		if (this.state.loading) {
 			content = <Text style={{ color: '#fff' }}>Loading...</Text>;
@@ -69,15 +72,29 @@ export default class MainScreen extends Component {
 					/>
 				);
 			});
+
+			header = (
+				<Text style={styles.header}>
+					Click on the comic if you want to view it in detail!
+				</Text>
+			);
+
+			footer = (
+				<Text
+					style={[styles.header, styles.footer]}
+					onPress={() => navigation.navigate('About')}
+				>
+					Click on the footer to read about xkcd!
+				</Text>
+			);
 		}
 
 		return (
 			<ScrollView>
 				<View style={{ backgroundColor: '#000', height: '100%' }}>
-					<Text style={styles.header}>
-						Click on the comic if you want to view it in detail!
-					</Text>
+					{header}
 					{content}
+					{footer}
 				</View>
 			</ScrollView>
 		);
@@ -96,6 +113,10 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 30,
 		fontWeight: 'bold',
-		marginBottom: 50,
+	},
+	footer: {
+		position: 'absolute',
+		bottom: 0,
+		margin: 0,
 	},
 });

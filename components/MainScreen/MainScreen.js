@@ -3,6 +3,7 @@ import axios from 'axios';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 
 import Comic from '../Comic/Comic';
+import Spinner from '../Spinner/Spinner';
 
 export default class MainScreen extends Component {
 	state = {
@@ -21,7 +22,7 @@ export default class MainScreen extends Component {
 					recentComicNum: response.data.num,
 				}));
 
-				for (let counter = 0; counter < 7; counter++) {
+				for (let counter = 0; counter < 30; counter++) {
 					axios
 						.get(
 							'https://xkcd.com/' +
@@ -35,7 +36,7 @@ export default class MainScreen extends Component {
 									secondResponse.data,
 								],
 							}));
-							if (counter == 6) {
+							if (counter == 29) {
 								this.setState({
 									loading: false,
 								});
@@ -60,7 +61,7 @@ export default class MainScreen extends Component {
 		let footer = null;
 
 		if (this.state.loading) {
-			content = <Text style={styles.loading}>Loading...</Text>;
+			content = <Spinner />;
 		} else {
 			content = this.state.comics.map((comic) => {
 				return (
@@ -81,7 +82,7 @@ export default class MainScreen extends Component {
 
 			footer = (
 				<Text
-					style={[styles.main__header, styles.main_footer]}
+					style={[styles.main__header, styles.main__footer]}
 					onPress={() => navigation.navigate('About')}
 				>
 					Click on the footer to read about xkcd!
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		fontWeight: 'bold',
 	},
-	main__footer: {
+	main__foter: {
 		position: 'absolute',
 		bottom: 0,
 		margin: 0,

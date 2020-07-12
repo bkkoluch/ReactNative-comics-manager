@@ -60,7 +60,7 @@ export default class MainScreen extends Component {
 		let footer = null;
 
 		if (this.state.loading) {
-			content = <Text style={{ color: '#fff' }}>Loading...</Text>;
+			content = <Text style={styles.loading}>Loading...</Text>;
 		} else {
 			content = this.state.comics.map((comic) => {
 				return (
@@ -74,14 +74,14 @@ export default class MainScreen extends Component {
 			});
 
 			header = (
-				<Text style={styles.header}>
+				<Text style={styles.main__header}>
 					Click on the comic if you want to view it in detail!
 				</Text>
 			);
 
 			footer = (
 				<Text
-					style={[styles.header, styles.footer]}
+					style={[styles.main__header, styles.main_footer]}
 					onPress={() => navigation.navigate('About')}
 				>
 					Click on the footer to read about xkcd!
@@ -102,21 +102,30 @@ export default class MainScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-	header: {
+	main__container: {
+		backgroundColor: '#000',
+		height: '100%',
+	},
+	main__header: {
 		marginTop: 0,
 		paddingVertical: 8,
 		borderWidth: 4,
 		borderColor: '#20232a',
 		borderRadius: 6,
-		backgroundColor: '#61dafb',
+		backgroundColor: '#fff',
 		color: '#20232a',
 		textAlign: 'center',
 		fontSize: 30,
 		fontWeight: 'bold',
 	},
-	footer: {
+	main__footer: {
 		position: 'absolute',
 		bottom: 0,
 		margin: 0,
+	},
+	loading: {
+		color: '#fff',
+		textAlign: 'center',
+		fontSize: 32,
 	},
 });

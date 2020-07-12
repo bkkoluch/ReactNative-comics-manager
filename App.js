@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MainScreen from './components/MainScreen/MainScreen';
 import DetailedComic from './components/Comic/DetailedComic/DetailedComic';
 import About from './components/About/About';
+console.disableYellowBox = true;
 
 export default function App() {
 	const Stack = createStackNavigator();

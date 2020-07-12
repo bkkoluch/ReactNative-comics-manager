@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
-export default function DetailedComic(props, { navigation }) {
+export default function DetailedComic(props) {
 	return (
-		<View style={styles.comic__container}>
-			<Text style={styles.comic__title}>
+		<View style={styles.detailed__container}>
+			<Text style={styles.detailed__title}>
 				{props.route.params.props.title}
 			</Text>
 			<Image
-				style={styles.comic__image}
+				style={styles.detailed__image}
 				source={{
 					uri: props.route.params.props.image,
 				}}
@@ -19,19 +19,19 @@ export default function DetailedComic(props, { navigation }) {
 }
 
 const styles = StyleSheet.create({
-	comic__container: {
-		marginTop: 50,
-		height: 400,
+	detailed__container: {
+		height: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
+		backgroundColor: '#000',
 	},
-	comic__title: {
-		color: '#000',
+	detailed__title: {
+		color: '#fff',
 		fontSize: 32,
 		textAlign: 'center',
 	},
-	comic__image: {
-		height: '100%',
+	detailed__image: {
+		height: '80%',
 		width: '100%',
 	},
 });

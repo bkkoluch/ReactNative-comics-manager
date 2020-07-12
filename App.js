@@ -10,8 +10,25 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name='Home' component={MainScreen} />
-				<Stack.Screen name='Comic' component={DetailedComic} />
+				<Stack.Screen
+					name='Home'
+					component={MainScreen}
+					options={{
+						headerTitleStyle: {
+							textAlign: 'center',
+						},
+					}}
+				/>
+				<Stack.Screen
+					name='Comic'
+					component={DetailedComic}
+					options={{
+						headerTitleStyle: {
+							textAlign: 'center',
+							marginRight: 50,
+						},
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

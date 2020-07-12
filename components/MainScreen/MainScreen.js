@@ -57,7 +57,7 @@ export default class MainScreen extends Component {
 		let content = [];
 
 		if (this.state.loading) {
-			content = <Text style={{ color: '#fff' }}>Loading...</Text>;
+			content = <Text style={styles.loading}>Loading...</Text>;
 		} else {
 			content = this.state.comics.map((comic) => {
 				return (
@@ -73,8 +73,8 @@ export default class MainScreen extends Component {
 
 		return (
 			<ScrollView>
-				<View style={{ backgroundColor: '#000', height: '100%' }}>
-					<Text style={styles.header}>
+				<View style={styles.main__container}>
+					<Text style={styles.main__header}>
 						Click on the comic if you want to view it in detail!
 					</Text>
 					{content}
@@ -85,17 +85,26 @@ export default class MainScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-	header: {
+	main__container: {
+		backgroundColor: '#000',
+		height: '100%',
+	},
+	main__header: {
 		marginTop: 0,
 		paddingVertical: 8,
 		borderWidth: 4,
 		borderColor: '#20232a',
 		borderRadius: 6,
-		backgroundColor: '#61dafb',
+		backgroundColor: '#fff',
 		color: '#20232a',
 		textAlign: 'center',
 		fontSize: 30,
 		fontWeight: 'bold',
 		marginBottom: 50,
+	},
+	loading: {
+		color: '#fff',
+		textAlign: 'center',
+		fontSize: 32,
 	},
 });

@@ -29,15 +29,15 @@ const styles = StyleSheet.create({
 		marginBottom: 60,
 		padding: 40,
 	},
-	comic__image: {
-		height: 60,
-		width: 200,
-	},
 	comic__title: {
 		color: '#fff',
 		fontSize: 20,
 		letterSpacing: -2,
 		textTransform: 'uppercase',
 		marginLeft: 5,
+	},
+	comic__image: {
+		height: 60,
+		width: 200,
 	},
 });

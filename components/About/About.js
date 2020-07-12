@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function About() {
 	return (
@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#000',
 		height: '100%',
 	},
-	about__title: {
-		fontSize: 32,
-		textAlign: 'center',
-	},
 	about__text: {
 		marginBottom: 20,
 		color: '#fff',
+	},
+	about__title: {
+		fontSize: 32,
+		textAlign: 'center',
 	},
 	about__recommendation: {
 		color: '#fff',

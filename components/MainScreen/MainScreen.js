@@ -22,7 +22,7 @@ export default class MainScreen extends Component {
 					recentComicNum: response.data.num,
 				}));
 
-				for (let counter = 0; counter < 30; counter++) {
+				for (let counter = 0; counter < 7; counter++) {
 					axios
 						.get(
 							'https://xkcd.com/' +
@@ -36,7 +36,7 @@ export default class MainScreen extends Component {
 									secondResponse.data,
 								],
 							}));
-							if (counter == 29) {
+							if (counter == 6) {
 								this.setState({
 									loading: false,
 								});
@@ -92,7 +92,7 @@ export default class MainScreen extends Component {
 
 		return (
 			<ScrollView>
-				<View style={{ backgroundColor: '#000', height: '100%' }}>
+				<View style={styles.main__container}>
 					{header}
 					{content}
 					{footer}
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		fontWeight: 'bold',
 	},
-	main__foter: {
+	main__footer: {
 		position: 'absolute',
 		bottom: 0,
 		margin: 0,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import DetailedComic from './DetailedComic/DetailedComic';
 
 export default function (props) {
 	return (
@@ -10,7 +11,9 @@ export default function (props) {
 					style={styles.image}
 					source={{ uri: props.image }}
 					resizeMode='contain'
-					onTouchStart={() => props.navigation.navigate('Comic')}
+					onTouchStart={() =>
+						props.navigation.navigate('Comic', { props })
+					}
 				/>
 			</View>
 		</TouchableOpacity>

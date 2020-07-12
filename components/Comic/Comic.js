@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#000',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginBottom: 50,
+		marginBottom: 60,
 		padding: 40,
 	},
 	comic__image: {
